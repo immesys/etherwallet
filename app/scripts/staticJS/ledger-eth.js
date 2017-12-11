@@ -217,4 +217,3 @@ LedgerEth.prototype.signPersonalMessage_async = function(path, messageHex, callb
 }
 
 module.exports = LedgerEth;
-

@@ -56,7 +56,7 @@ uiFuncs.signTxTrezor = function(rawTx, txData, callback) {
     );
 }
 uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
-    eTx.raw[6] = Buffer.from([rawTx.chainId]);
+    eTx.raw[6] = Buffer.from([17,162]);
     eTx.raw[7] = eTx.raw[8] = 0;
     var toHash = old ? eTx.raw.slice(0, 6) : eTx.raw;
     var txToSign = ethUtil.rlp.encode(toHash);
@@ -69,7 +69,7 @@ uiFuncs.signTxLedger = function(app, eTx, rawTx, txData, old, callback) {
             });
             return;
         }
-        rawTx.v = "0x" + result['v'];
+        rawTx.v = "0x2367";//"0x" + result['v'];
         rawTx.r = "0x" + result['r'];
         rawTx.s = "0x" + result['s'];
         eTx = new ethUtil.Tx(rawTx);
